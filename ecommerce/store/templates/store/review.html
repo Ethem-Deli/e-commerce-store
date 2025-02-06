@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review</title>
+    <link rel="stylesheet" href="{% static 'store/styles/styles-large.css' %}">
+    <link rel="stylesheet" href="{% static 'store/styles/styles-small.css' %}">
+</head>
+
+<body>
+    <header>
+        <h1>Submit Your Review</h1>
+    </header>
+    <main>
+        <form id="review-form">
+            <label for="product">Select Product:</label>
+            <select id="product">
+                <option value="book1">The Very Hungry Caterpillar</option>
+                <option value="book2">Goodnight Moon</option>
+                <option value="book3">Where the Wild Things Are</option>
+            </select>
+
+            <label for="rating">Rating:</label>
+            <select id="rating">
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+
+            <label for="review">Write your review:</label>
+            <textarea id="review" rows="4"></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+        <div id="review-result"></div>
+    </main>
+    <button id="help-button">Help</button>
+    <script src="{% static 'store/scripts/script.js' %}"></script>
+</body>
+</html>
