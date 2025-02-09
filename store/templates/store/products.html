@@ -30,14 +30,24 @@
         <section id="products" class="product-list">
             {% for product in products %}
             <div class="product" data-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'store/images/default-product.jpg' %}" alt="Default Product">
+                {% endif %}
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.description }}</p>
                 <p>Price: ${{ product.price }}</p>
                 <label>Qty: <input type="number" min="1" value="1"></label>
-                <button class="add-to-cart">Add to Cart</button>
+            
+                <!-- ✅ Add the corrected "Add to Cart" button here -->
+                <button class="add-to-cart" data-url="{% url 'add-to-cart' product.id %}">
+                    Add to Cart
+                </button>
+            
             </div>
             {% endfor %}
+            
         </section>
     </main>
 
