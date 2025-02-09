@@ -1,15 +1,39 @@
-from django.shortcuts import render
-from .models import Product  # Ensure Product model exists
+from django.shortcuts import render, redirect
+from rest_framework import generics
+from rest_framework.renderers import JSONRenderer
+from .models import Product
+from .serializers import ProductSerializer
 
+# API: List all products (used by Django REST Framework)
+class ProductListView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    renderer_classes = [JSONRenderer]  
+
+# View: Home page
 def index(request):
     return render(request, 'store/index.html')
 
+# View: Show all products (uses template)
 def products(request):
-    products = Product.objects.all()  # Fetch products from the database
+    products = Product.objects.all()
     return render(request, 'store/products.html', {'products': products})
 
+# View: Shopping cart page
 def cart(request):
     return render(request, 'store/cart.html')
 
+# View: Add product to cart (Session-based)
+def add_to_cart(request, product_id):
+    cart = request.session.get('cart', {})
+    cart[product_id] = cart.get(product_id, 0) + 1  # Increase quantity
+    request.session['cart'] = cart  # Save to session
+    return redirect('cart')
+
+# View: Handle product reviews
 def review(request):
+    if request.method == "POST":
+        rating = request.POST.get("rating")
+        comment = request.POST.get("comment")
+        return render(request, 'store/review.html', {"rating": rating, "comment": comment})
     return render(request, 'store/review.html')

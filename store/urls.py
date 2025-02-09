@@ -1,9 +1,11 @@
 from django.urls import path
-from . import views
+from .views import ProductListView, index, products, cart, add_to_cart, review
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('products/', views.products, name='product-list'),
-    path('cart/', views.cart, name='cart'),
-    path('review/', views.review, name='review'),
+    path("", index, name="index"),
+    path("products/", ProductListView.as_view(), name="product-list"),  # API View
+    path("store/products/", products, name="products"),
+    path("cart/", cart, name="cart"),
+    path("cart/add/<int:product_id>/", add_to_cart, name="add-to-cart"),  # Requires product ID
+    path("review/", review, name="review"),
 ]

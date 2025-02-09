@@ -1,0 +1,143 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #333, #222);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    max-height: 50px;
+    margin-bottom: 10px;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav ul li {
+    display: block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px;
+    display: block;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background: #ffcc00;
+    color: #333;
+}
+
+/* Product List */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Product Card */
+.product {
+    width: 95%;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Quantity Input */
+.product input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Add to Cart Button */
+button.add-to-cart {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+button.add-to-cart:hover {
+    background: #218838;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Help Button */
+#help-button {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.3s;
+}
+
+#help-button:hover {
+    transform: scale(1.1);
+    background: #0056b3;
+}

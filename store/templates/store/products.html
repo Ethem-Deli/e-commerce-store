@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - E-Commerce Store</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{% static 'store/styles/styles-large.css' %}" media="screen and (min-width: 768px)">
+    <link rel="stylesheet" href="{% static 'store/styles/styles-small.css' %}" media="screen and (max-width: 767px)">
+</head>
+<body>
+
+
+    <header>
+        <img src="{% static 'store/images/logo.webp' %}" alt="Store logo" class="logo">
+        <h1>E-Commerce Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'product-list' %}">Products</a></li>
+                <li><a href="{% url 'cart' %}">Cart(<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products" class="product-list">
+            {% for product in products %}
+            <div class="product" data-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <label>Qty: <input type="number" min="1" value="1"></label>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+
+    <!-- Load JavaScript -->
+    <script src="{% static 'store/scripts/scripts.js' %}"></script>
+    <script src="{% static 'store/scripts/checkout.js' %}"></script>
+    <script src="{% static 'store/scripts/cart.js' %}"></script>
+
+
+</body>
+</html>
