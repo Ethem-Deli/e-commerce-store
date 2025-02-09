@@ -70,3 +70,6 @@ def update_cart(request):
             return JsonResponse({"error": "Product not found in cart"}, status=404)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+def cart_count(request):
+    # Your logic here
+    return JsonResponse({"count": 0})
