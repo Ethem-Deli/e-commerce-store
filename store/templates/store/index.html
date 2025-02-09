@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=" E-Commerce Store">
+    <meta name="author" content="Ethem Deli">
+    <meta property="og:title" content=" E-Commerce Store">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-image.jpeg">
+    <meta property="og:url" content="https://ethem-deli.github.io">
+    <title>Home - E-Commerce Store</title>
+    <link rel="stylesheet" href="{% static 'store/styles/styles-large.css' %}">
+    <link rel="stylesheet" href="{% static 'store/styles/styles-small.css' %}">
+</head>
+
+<body>
+    <header>
+        <img src="{% static 'store/images/logo.webp' %}" alt="Store Logo" class="logo">
+        <h1>Welcome to Our E-Commerce Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'product-list' %}">Products</a></li>
+                <li><a href="{% url 'cart' %}">Cart(<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about">
+            <h2>About Our Store</h2>
+            <p>We specialize in children's books that are educational and fun.</p>
+        </section>
+        <section id="mission">
+            <h2>Our Mission</h2>
+            <p>Inspiring young minds through books!</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: support@ecommercestore.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </section>
+    </main>
+    <button id="help-button">Help</button>
+    <footer>
+        <p>&copy; 2024 E-Commerce Store. All Rights Reserved.</p>
+    </footer>
+    <script src="{% static 'store/scripts/scripts.js' %}"></script>
+    <script src="{% static 'store/scripts/checkout.js' %}"></script>
+    <script src="{% static 'store/scripts/cart.js' %}"></script>
+
+</body>
+</html>
