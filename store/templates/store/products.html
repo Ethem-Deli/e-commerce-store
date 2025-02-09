@@ -13,14 +13,13 @@
 </head>
 <body>
 
-
     <header>
         <img src="{% static 'store/images/logo.webp' %}" alt="Store logo" class="logo">
         <h1>E-Commerce Store</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'product-list' %}">Products</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
                 <li><a href="{% url 'cart' %}">Cart(<span id="cart-count">0</span>)</a></li>
             </ul>
         </nav>
@@ -29,25 +28,15 @@
     <main>
         <section id="products" class="product-list">
             {% for product in products %}
-            <div class="product" data-id="{{ product.id }}" data-name="{{ product.name }}" data-price="{{ product.price }}">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'store/images/default-product.jpg' %}" alt="Default Product">
-                {% endif %}
-                <h2>{{ product.name }}</h2>
-                <p>{{ product.description }}</p>
-                <p>Price: ${{ product.price }}</p>
-                <label>Qty: <input type="number" min="1" value="1"></label>
-            
-                <!-- ✅ Add the corrected "Add to Cart" button here -->
-                <button class="add-to-cart" data-url="{% url 'add-to-cart' product.id %}">
-                    Add to Cart
-                </button>
-            
-            </div>
+                <div class="product">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.description }}</p>
+                    <p>Price: ${{ product.price }}</p>
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" width="200">
+                </div>
+            {% empty %}
+                <p>No products available.</p>
             {% endfor %}
-            
         </section>
     </main>
 
@@ -55,7 +44,6 @@
     <script src="{% static 'store/scripts/scripts.js' %}"></script>
     <script src="{% static 'store/scripts/checkout.js' %}"></script>
     <script src="{% static 'store/scripts/cart.js' %}"></script>
-
 
 </body>
 </html>

@@ -14,9 +14,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"  # For production use
 
-# Media Files (User Uploaded Files)
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"  # Store uploaded images here
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Installed Applications
 INSTALLED_APPS = [
