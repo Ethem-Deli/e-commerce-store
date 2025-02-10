@@ -10,12 +10,13 @@ ROOT_URLCONF = 'ecommerce.urls'  # Replace 'ecommerce' with your actual project 
 # Static Files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(BASE_DIR, "store/static"),  # ✅ Ensure this path exists
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"  # For production use
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA FILES (if using ImageField)
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Installed Applications
 INSTALLED_APPS = [
