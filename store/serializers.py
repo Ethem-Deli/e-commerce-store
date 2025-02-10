@@ -1,16 +1,13 @@
 from rest_framework import serializers
-from .models import Product
+from store.models import Product
+from django.templatetags.static import static  # Import static method
 
 class ProductSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()  # Custom image URL fix
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description', 'price', 'image']
+        fields = ['id', 'name', 'description', 'price', 'image_url']
 
-    def get_image(self, obj):
-        """Ensure the correct absolute URL for images"""
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None
+    def get_image_url(self, obj):
+        return static(obj.image)  # Convert static path to a full URL

@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import (
     ProductListView, index, products, cart, add_to_cart, review, 
     get_cart_items, update_cart, cart_count
@@ -19,5 +21,3 @@ urlpatterns = [
     path("api/cart/update/", update_cart, name="cart-update"),
     path("api/cart/count/", cart_count, name="cart_count"),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
